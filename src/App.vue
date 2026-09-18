@@ -1,12 +1,30 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view />
+  <div id="app" class="min-h-screen bg-stone-50 text-stone-800 flex flex-col justify-between">
+    <!-- Header Component -->
+    <AppHeader />
+
+    <!-- Main Dynamic View -->
+    <main class="flex-grow">
+      <router-view />
+    </main>
+
+    <!-- Footer Component -->
+    <AppFooter />
   </div>
 </template>
+
+<script>
+import AppHeader from './components/Layout/AppHeader.vue'
+import AppFooter from './components/Layout/AppFooter.vue'
+
+export default {
+  name: 'App',
+  components: {
+    AppHeader,
+    AppFooter
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
