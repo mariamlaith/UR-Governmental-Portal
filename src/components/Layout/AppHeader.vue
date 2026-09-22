@@ -49,7 +49,7 @@
           <a href="#" class="nav-link">{{ currentLang === 'ar' ? 'الأسئلة الشائعة' : 'FAQs' }}</a>
         </nav>
 
-        <button class="flex shrink-0 items-center gap-2 rounded-full bg-[#702923] px-4 py-2 text-xs font-bold text-white shadow-sm transition-colors hover:bg-[#57201c] sm:px-5 sm:text-sm" type="button">
+        <button @click="$router.push({ name: 'login' })" class="flex shrink-0 items-center gap-2 rounded-full bg-[#702923] px-4 py-2 text-xs font-bold text-white shadow-sm transition-colors hover:bg-[#57201c] sm:px-5 sm:text-sm" type="button">
           <span>{{ currentLang === 'ar' ? 'تسجيل الدخول' : 'Sign In' }}</span>
           <Icon icon="mdi:account-outline" class="h-4 w-4" />
         </button>
