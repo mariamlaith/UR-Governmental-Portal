@@ -49,7 +49,7 @@
             <!-- IMAGE CONTAINER -->
             <div class="relative w-full h-48 rounded-xl overflow-hidden mb-4 bg-stone-200 dark:bg-stone-800">
               <img 
-                :src="item.image" 
+                :src="getImageUrl(item.image)" 
                 :alt="item.title" 
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
@@ -100,6 +100,14 @@ export default {
       default: 'ar'
     }
   },
+  methods: {
+    // Helper method to resolve public assets correctly on any route path
+    getImageUrl(path) {
+      const baseUrl = process.env.BASE_URL || '/';
+      const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+      return `${baseUrl}${cleanPath}`;
+    }
+  },
   computed: {
     localizedNews() {
       const isAr = this.currentLang === 'ar';
@@ -109,28 +117,28 @@ export default {
             ? 'الهيئة العليا للحج والعمرة تُطلق الاستمارة الخاصة بـ "لم الشمل" و "تعديل البيانات" عبر بوابة أور الإلكترونية'
             : 'Hajj and Umrah Supreme Commission launches "Reunion" and "Data Modification" forms via Ur Portal',
           date: isAr ? '٢٩ يوليو ٢٠٢٦' : 'July 29, 2026',
-          image: '/photo1.jpg'
+          image: 'photo1.jpg'
         },
         {
           title: isAr 
             ? 'لضمان السرعة والأولوية في المتابعة... "بوابة أور" تطلق منصة "رسائلي" المباشرة للدعم الفني'
             : 'To ensure speed and priority... Ur Portal launches "Rasaeliy" direct support platform',
           date: isAr ? '٣٠ يوليو ٢٠٢٦' : 'July 30, 2026',
-          image: '/photo4.png'
+          image: 'photo4.png'
         },
         {
           title: isAr 
             ? 'الهيئة العليا للحج والعمرة تُطلق خدمة استرجاع مبالغ التسجيل لقرعة الحج إلكترونياً'
             : 'Hajj and Umrah Supreme Commission launches electronic refund service for Hajj lottery fees',
           date: isAr ? '١ أغسطس ٢٠٢٦' : 'August 1, 2026',
-          image: '/photo3.png'
+          image: 'photo3.png'
         },
         {
           title: isAr 
             ? 'هيئة التقاعد الوطنية تطلق استمارة تحديث بيانات المتقاعدين بالتنسيق مع المركز الوطني للتحول الرقمي'
             : 'National Retirement Board launches retiree data update form with the Digital Transformation Center',
           date: isAr ? '١٤ سبتمبر ٢٠٢٦' : 'September 14, 2026',
-          image: '/photo2.jpg'
+          image: 'photo2.jpg'
         }
       ];
     }
